@@ -20,36 +20,12 @@
     return anchor.getAttribute('href').slice(1);
   });
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const root = document.documentElement;
-
-  /* Theme toggle — no page reload, preserves scroll */
-  function getTheme() {
-    return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-  }
-
-  function updateThemeLabel() {
-    if (!themeToggle) return;
-    const isLight = getTheme() === 'light';
-    themeToggle.textContent = isLight ? 'Ciemny' : 'Jasny';
-    themeToggle.setAttribute('aria-label', isLight ? 'Włącz ciemny motyw' : 'Włącz jasny motyw');
-  }
-
-  function setTheme(theme) {
-    if (theme === 'light') {
-      root.setAttribute('data-theme', 'light');
-    } else {
-      root.removeAttribute('data-theme');
-    }
-    try { localStorage.setItem('theme', theme); } catch (e) {}
-    updateThemeLabel();
-    updateCaptchaTheme();
-  }
 
   function updateCaptchaTheme() {
     const widget = document.querySelector('.h-captcha');
-    if (widget) {
-      widget.setAttribute('data-theme', getTheme() === 'light' ? 'light' : 'dark');
-    }
+    if (!widget || !window.SolidSpawTheme) return;
+    const theme = window.SolidSpawTheme.getTheme();
+    widget.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
   }
 
   if (location.protocol === 'file:') {
@@ -61,13 +37,7 @@
   }
 
   updateCaptchaTheme();
-
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      setTheme(getTheme() === 'light' ? 'dark' : 'light');
-    });
-  }
-  updateThemeLabel();
+  document.addEventListener('solidspaw-themechange', updateCaptchaTheme);
 
   /* Header scroll */
   function onScroll() {
