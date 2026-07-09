@@ -250,10 +250,28 @@
   const lightboxClose = document.getElementById('lightboxClose');
   let lightboxTrigger = null;
 
-  function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
+  function safeApiMessage(msg) {
+    if (typeof msg !== 'string') return 'Nie udało się wysłać wiadomości. Spróbuj ponownie.';
+    return msg.trim().slice(0, 500);
+  }
+
+  function setLightboxCaption(tagText, nameText) {
+    if (!lightboxCaption) return;
+    lightboxCaption.replaceChildren();
+    if (!tagText && !nameText) {
+      lightboxCaption.hidden = true;
+      return;
+    }
+    if (tagText) {
+      const tagEl = document.createElement('span');
+      tagEl.className = 'lightbox__caption-tag';
+      tagEl.textContent = tagText;
+      lightboxCaption.appendChild(tagEl);
+    }
+    if (nameText) {
+      lightboxCaption.appendChild(document.createTextNode(nameText));
+    }
+    lightboxCaption.hidden = false;
   }
 
   function openLightbox(item) {
@@ -270,15 +288,7 @@
     if (lightboxCaption) {
       const tagText = tag ? tag.textContent.trim() : '';
       const nameText = name ? name.textContent.trim() : '';
-      if (tagText || nameText) {
-        lightboxCaption.innerHTML =
-          (tagText ? '<span class="lightbox__caption-tag">' + escapeHtml(tagText) + '</span>' : '') +
-          escapeHtml(nameText);
-        lightboxCaption.hidden = false;
-      } else {
-        lightboxCaption.textContent = '';
-        lightboxCaption.hidden = true;
-      }
+      setLightboxCaption(tagText, nameText);
     }
 
     lightbox.removeAttribute('hidden');
@@ -342,13 +352,24 @@
   /* Form validation */
   const validators = {
     name: function (v) {
-      if (!v.trim()) return 'Podaj imię i nazwisko.';
-      if (v.trim().length < 3) return 'Minimum 3 znaki.';
+      const t = v.trim();
+      if (!t) return 'Podaj imię i nazwisko.';
+      if (t.length < 3) return 'Minimum 3 znaki.';
+      if (t.length > 100) return 'Maksimum 100 znaków.';
       return '';
     },
     email: function (v) {
-      if (!v.trim()) return 'Podaj adres e-mail.';
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Nieprawidłowy adres e-mail.';
+      const t = v.trim();
+      if (!t) return 'Podaj adres e-mail.';
+      if (t.length > 254) return 'Adres e-mail jest zbyt długi.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)) return 'Nieprawidłowy adres e-mail.';
+      return '';
+    },
+    phone: function (v) {
+      const t = v.trim();
+      if (!t) return '';
+      if (t.length > 20) return 'Numer telefonu jest zbyt długi.';
+      if (!/^[\d\s+\-()]{7,20}$/.test(t)) return 'Nieprawidłowy numer telefonu.';
       return '';
     },
     subject: function (v) {
@@ -356,8 +377,10 @@
       return '';
     },
     message: function (v) {
-      if (!v.trim()) return 'Wpisz wiadomość.';
-      if (v.trim().length < 10) return 'Minimum 10 znaków.';
+      const t = v.trim();
+      if (!t) return 'Wpisz wiadomość.';
+      if (t.length < 10) return 'Minimum 10 znaków.';
+      if (t.length > 5000) return 'Maksimum 5000 znaków.';
       return '';
     },
     consent: function (checked) {
@@ -408,6 +431,15 @@
       if (formError) formError.hidden = true;
       if (!validateForm() || !validateCaptcha()) return;
 
+      const accessKey = window.SITE_CONFIG && window.SITE_CONFIG.web3formsAccessKey;
+      if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        if (formError) {
+          formError.textContent = 'Formularz nie jest skonfigurowany. Skontaktuj się bezpośrednio przez e-mail.';
+          formError.hidden = false;
+        }
+        return;
+      }
+
       const btn = contactForm.querySelector('[type="submit"]');
       const originalText = btn.textContent;
       btn.disabled = true;
@@ -415,6 +447,7 @@
 
       const formData = new FormData(contactForm);
       formData.delete('consent');
+      formData.set('access_key', accessKey);
 
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -437,7 +470,7 @@
             const captchaErr = document.getElementById('captchaError');
             if (captchaErr) captchaErr.textContent = '';
           } else if (formError) {
-            formError.textContent = result.data.message || 'Nie udało się wysłać wiadomości. Spróbuj ponownie.';
+            formError.textContent = safeApiMessage(result.data.message) || 'Nie udało się wysłać wiadomości. Spróbuj ponownie.';
             formError.hidden = false;
             resetCaptcha();
           }

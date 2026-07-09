@@ -23,8 +23,6 @@
   <meta property="og:description" content="Certyfikowane spawanie TIG, MIG/MAG i konstrukcje stalowe w Wrześni. Balustrady, schody, wiaty i realizacje przemysłowe. Ponad 15 lat doświadczenia.">
   <meta property="og:url" content="https://kooogi.github.io/solidspaw-wrzesnia/">
   <meta property="og:image" content="https://kooogi.github.io/solidspaw-wrzesnia/portfolio/taras-stalowy-zadaszenie-balustrada.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Taras stalowy z zadaszeniem — realizacja SolidSpaw Września">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -32,22 +30,17 @@
   <meta name="twitter:description" content="Certyfikowane spawanie TIG, MIG/MAG i konstrukcje stalowe w Wrześni i Wielkopolsce.">
   <meta name="twitter:image" content="https://kooogi.github.io/solidspaw-wrzesnia/portfolio/taras-stalowy-zadaszenie-balustrada.jpg">
   <meta name="twitter:image:alt" content="Taras stalowy z zadaszeniem — realizacja SolidSpaw Września">
-  <script>
-    (function () {
-      try {
-        if (localStorage.getItem('theme') === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      } catch (e) {}
-    })();
-  </script>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://web3forms.com https://js.hcaptcha.com https://*.hcaptcha.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://*.hcaptcha.com; frame-src https://*.hcaptcha.com; base-uri 'self'; form-action https://api.web3forms.com; upgrade-insecure-requests">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+  <script src="theme-init.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://api.web3forms.com">
   <link rel="dns-prefetch" href="https://web3forms.com">
   <link rel="preload" href="styles.css" as="style">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&amp;family=Syne:wght@500;600;700;800&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&amp;family=Syne:wght@500;600;700;800&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&amp;family=Syne:wght@500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-light.css">
 </head>
@@ -475,22 +468,22 @@
         </div>
 
         <form class="contact__form glass reveal reveal--delay" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate aria-label="Formularz kontaktowy">
-          <input type="hidden" name="access_key" value="8483ecd1-4c16-4a53-b0e8-71c6faf38057">
           <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-grid">
             <div class="field">
               <label for="name">Imię i nazwisko</label>
-              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jan Kowalski">
+              <input type="text" id="name" name="name" required maxlength="100" autocomplete="name" placeholder="Jan Kowalski">
               <span class="field__error" id="nameError" role="alert"></span>
             </div>
             <div class="field">
               <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required autocomplete="email" placeholder="jan@example.com">
+              <input type="email" id="email" name="email" required maxlength="254" autocomplete="email" placeholder="jan@example.com">
               <span class="field__error" id="emailError" role="alert"></span>
             </div>
             <div class="field">
               <label for="phone">Telefon <span class="field__optional">(opcjonalnie)</span></label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+48 000 000 000">
+              <input type="tel" id="phone" name="phone" maxlength="20" inputmode="tel" autocomplete="tel" placeholder="+48 000 000 000">
+              <span class="field__error" id="phoneError" role="alert"></span>
             </div>
             <div class="field">
               <label for="subject">Temat</label>
@@ -507,24 +500,16 @@
           </div>
           <div class="field">
             <label for="message">Wiadomość</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Opisz projekt, materiał, termin…"></textarea>
+            <textarea id="message" name="message" rows="5" required minlength="10" maxlength="5000" placeholder="Opisz projekt, materiał, termin…"></textarea>
             <span class="field__error" id="messageError" role="alert"></span>
           </div>
           <div class="field field--check">
             <input type="checkbox" id="consent" name="consent" required>
-            <label for="consent">Wyrażam zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie.</label>
+            <label for="consent">Wyrażam zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie (<a href="polityka-prywatnosci.html">polityka prywatności</a>).</label>
             <span class="field__error" id="consentError" role="alert"></span>
           </div>
           <div class="field field--captcha">
             <div class="h-captcha" data-captcha="true" data-lang="pl" data-theme="dark"></div>
-            <script>
-              (function () {
-                var widget = document.currentScript.previousElementSibling;
-                if (widget) {
-                  widget.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
-                }
-              })();
-            </script>
             <span class="field__error" id="captchaError" role="alert"></span>
           </div>
           <button type="submit" class="btn btn--primary btn--full">Wyślij wiadomość</button>
@@ -550,6 +535,7 @@
         <a href="#galeria">Realizacje</a>
         <a href="#faq">FAQ</a>
         <a href="#kontakt">Kontakt</a>
+        <a href="polityka-prywatnosci.html">Prywatność</a>
       </nav>
     </div>
   </footer>
@@ -568,6 +554,15 @@
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://kooogi.github.io/solidspaw-wrzesnia/#organization",
+        "name": "SolidSpaw",
+        "url": "https://kooogi.github.io/solidspaw-wrzesnia/",
+        "logo": "https://kooogi.github.io/solidspaw-wrzesnia/favicon.svg",
+        "email": "kontakt@solidspaw.pl",
+        "telephone": "+48-123-456-789"
+      },
       {
         "@type": "WebSite",
         "@id": "https://kooogi.github.io/solidspaw-wrzesnia/#website",
@@ -593,10 +588,12 @@
         "name": "SolidSpaw",
         "description": "Warsztat spawalniczy specjalizujący się w konstrukcjach stalowych, balustradach, schodach i spoinach przemysłowych metodami TIG, MIG/MAG i MMA.",
         "url": "https://kooogi.github.io/solidspaw-wrzesnia/",
+        "parentOrganization": { "@id": "https://kooogi.github.io/solidspaw-wrzesnia/#organization" },
         "telephone": "+48-123-456-789",
         "email": "kontakt@solidspaw.pl",
         "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/taras-stalowy-zadaszenie-balustrada.jpg",
         "priceRange": "$$",
+        "serviceType": ["Spawanie TIG", "Spawanie MIG/MAG", "Konstrukcje stalowe", "Balustrady", "Schody metalowe"],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "ul. Spawalnicza 12",
@@ -612,6 +609,7 @@
         },
         "areaServed": [
           { "@type": "City", "name": "Września" },
+          { "@type": "City", "name": "Poznań" },
           { "@type": "AdministrativeArea", "name": "Wielkopolskie" }
         ],
         "openingHoursSpecification": [
@@ -628,19 +626,42 @@
             "closes": "12:00"
           }
         ],
-        "knowsAbout": ["Spawanie TIG", "Spawanie MIG/MAG", "Konstrukcje stalowe", "Balustrady stalowe", "Schody metalowe"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Usługi spawalnicze SolidSpaw",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Konstrukcje stalowe" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Balustrady i ogrodzenia" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Schody metalowe" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wiaty i zadaszenia" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elementy przemysłowe" } }
+          ]
+        },
         "sameAs": []
       },
       {
         "@type": "ItemList",
         "@id": "https://kooogi.github.io/solidspaw-wrzesnia/#portfolio",
         "name": "Realizacje SolidSpaw",
+        "numberOfItems": 17,
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Taras stalowy z zadaszeniem", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/taras-stalowy-zadaszenie-balustrada.jpg" },
-          { "@type": "ListItem", "position": 2, "name": "Schody zewnętrzne metalowe", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-metalowe-taras.jpg" },
-          { "@type": "ListItem", "position": 3, "name": "Balustrada ze stali — siatka", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-stalowa-wrzesnia.jpg" },
-          { "@type": "ListItem", "position": 4, "name": "Schody spiralne", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-spiralne-balustrada.jpg" },
-          { "@type": "ListItem", "position": 5, "name": "Zabudowa przyczep rolniczych", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/zabudowa-przyczep-rolniczych.jpg" }
+          { "@type": "ListItem", "position": 1, "name": "Taras stalowy z zadaszeniem", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/taras-stalowy-zadaszenie-balustrada.jpg" },
+          { "@type": "ListItem", "position": 2, "name": "Schody zewnętrzne metalowe", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-metalowe-taras.jpg" },
+          { "@type": "ListItem", "position": 3, "name": "Schody stalowo-drewniane", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-stalowo-drewniane.jpg" },
+          { "@type": "ListItem", "position": 4, "name": "Konstrukcja tarasu i balkonu", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/konstrukcja-tarasu-balkonu-stalowego.jpg" },
+          { "@type": "ListItem", "position": 5, "name": "Balustrada grafitowa", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-grafitowa-schody.jpg" },
+          { "@type": "ListItem", "position": 6, "name": "Balustrada ze stali — siatka", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-stalowa-wrzesnia.jpg" },
+          { "@type": "ListItem", "position": 7, "name": "Schody spiralne", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-spiralne-balustrada.jpg" },
+          { "@type": "ListItem", "position": 8, "name": "Balustrada balkonowa — lamele", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-balkonowa-lamele.jpg" },
+          { "@type": "ListItem", "position": 9, "name": "Balustrada balkonowa", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-balkonowa-sciana.jpg" },
+          { "@type": "ListItem", "position": 10, "name": "Balustrada loftowa", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-loftowa-schody.jpg" },
+          { "@type": "ListItem", "position": 11, "name": "Balustrada z podświetleniem LED", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-schodowa-led.jpg" },
+          { "@type": "ListItem", "position": 12, "name": "Balustrada przy schodach kamiennych", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-schody-kamienne.jpg" },
+          { "@type": "ListItem", "position": 13, "name": "Schody drewniane z balustradą", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-drewniane-biala-balustrada.jpg" },
+          { "@type": "ListItem", "position": 14, "name": "Schody z oświetleniem", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-oswietlenie-design.jpg" },
+          { "@type": "ListItem", "position": 15, "name": "Schody z łukiem", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-luk-biala-balustrada.jpg" },
+          { "@type": "ListItem", "position": 16, "name": "Zabudowa przyczep rolniczych", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/zabudowa-przyczep-rolniczych.jpg" },
+          { "@type": "ListItem", "position": 17, "name": "Przyczepy — konstrukcja stalowa", "url": "https://kooogi.github.io/solidspaw-wrzesnia/#galeria", "image": "https://kooogi.github.io/solidspaw-wrzesnia/portfolio/przyczepy-konstrukcja-stalowa.jpg" }
         ]
       },
       {
@@ -705,6 +726,7 @@
   }
   </script>
 
+  <script src="config.js"></script>
   <script src="https://web3forms.com/client/script.js" async defer></script>
   <script src="script.js" defer></script>
 </body>
