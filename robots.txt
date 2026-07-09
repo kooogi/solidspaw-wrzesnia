@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://solidspaw.pl/sitemap.xml
+Sitemap: https://kooogi.github.io/solidspaw-wrzesnia/sitemap.xml
