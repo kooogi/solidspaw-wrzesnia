@@ -1,0 +1,24 @@
+{
+  "name": "SolidSpaw — Spawanie i Konstrukcje Stalowe",
+  "short_name": "SolidSpaw",
+  "description": "Precyzyjne spawanie TIG, MIG/MAG i konstrukcje stalowe w Wrześni i Wielkopolsce.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "lang": "pl",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
