@@ -9,6 +9,8 @@ html[data-theme="light"] {
   --bg-elevated:  #f4f4f5;
   --surface:      #ffffff;
   --surface-2:    #f4f4f5;
+  --section-band: #ffffff;
+  --section-band-alt: #f4f4f5;
   --border:       rgba(0, 0, 0, 0.08);
   --border-hover: rgba(0, 0, 0, 0.16);
   --text:         #09090b;

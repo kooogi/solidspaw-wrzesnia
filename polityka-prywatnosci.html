@@ -9,18 +9,24 @@
   <link rel="canonical" href="https://kooogi.github.io/solidspaw-wrzesnia/polityka-prywatnosci.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#09090b">
+  <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+  <script src="theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&amp;family=Syne:wght@500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-light.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Przejdź do treści</a>
-  <header class="site-header scrolled">
+  <header class="site-header scrolled" id="header">
     <div class="site-header__inner container">
       <a href="index.html#hero" class="brand" aria-label="SolidSpaw — strona główna">
         <span class="brand__mark" aria-hidden="true"></span>
         <span class="brand__name">SolidSpaw</span>
       </a>
+      <button type="button" id="themeToggle" class="site-nav__theme" aria-label="Zmień motyw">Jasny</button>
     </div>
   </header>
   <main id="main" class="section legal-page">
@@ -30,7 +36,7 @@
       <div class="legal-page__content">
         <p>Ostatnia aktualizacja: 9 lipca 2026 r.</p>
         <h2>1. Administrator danych</h2>
-        <p>Administratorem danych osobowych jest SolidSpaw, ul. Spawalnicza 12, 62-300 Września, e-mail: <a href="mailto:kontakt@solidspaw.pl">kontakt@solidspaw.pl</a>.</p>
+        <p>Administratorem danych osobowych jest SolidSpaw, ul. Spawalnicza 12, 62-300 Września, e-mail: <a class="text-link" href="mailto:kontakt@solidspaw.pl">kontakt@solidspaw.pl</a>.</p>
         <h2>2. Zakres i cel przetwarzania</h2>
         <p>Przetwarzamy dane podane w formularzu kontaktowym (imię i nazwisko, e-mail, telefon, treść wiadomości) wyłącznie w celu odpowiedzi na zapytanie i przygotowania wyceny.</p>
         <h2>3. Podstawa prawna</h2>

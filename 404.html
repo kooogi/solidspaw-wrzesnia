@@ -7,22 +7,34 @@
   <meta name="description" content="Nie znaleziono strony. Wróć na stronę główną SolidSpaw — spawanie i konstrukcje stalowe w Wrześni.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://kooogi.github.io/solidspaw-wrzesnia/">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; base-uri 'self'">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#09090b">
+  <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+  <script src="theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&amp;family=Syne:wght@500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-light.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+  <header class="site-header scrolled" id="header">
+    <div class="site-header__inner container">
+      <a href="index.html#hero" class="brand" aria-label="SolidSpaw — strona główna">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">SolidSpaw</span>
+      </a>
+      <button type="button" id="themeToggle" class="site-nav__theme" aria-label="Zmień motyw">Jasny</button>
+    </div>
+  </header>
   <main id="main" class="error-page">
     <div class="container error-page__inner">
       <p class="eyebrow">Błąd 404</p>
       <h1 class="error-page__title">Nie znaleziono strony</h1>
       <p class="error-page__lead">Adres mógł zostać zmieniony lub strona nie istnieje. Sprawdź link lub wróć na stronę główną.</p>
-      <a href="./" class="btn btn--primary">Strona główna</a>
+      <a href="index.html" class="btn btn--primary">Strona główna</a>
     </div>
   </main>
 </body>
