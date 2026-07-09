@@ -4,10 +4,15 @@
   var root = document.documentElement;
 
   try {
-    if (localStorage.getItem('theme') === 'light') {
+    var saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      root.removeAttribute('data-theme');
+    } else {
       root.setAttribute('data-theme', 'light');
     }
-  } catch (e) {}
+  } catch (e) {
+    root.setAttribute('data-theme', 'light');
+  }
 
   function updateThemeLabel() {
     var toggle = document.getElementById('themeToggle');
