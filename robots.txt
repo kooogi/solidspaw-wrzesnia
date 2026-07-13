@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kooogi.github.io/solidspaw-wrzesnia/sitemap.xml
+Sitemap: https://powala-wrzesnia.pl/sitemap.xml

@@ -4,7 +4,6 @@
   const header = document.getElementById('header');
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
-  const themeToggle = document.getElementById('themeToggle');
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
   const formError = document.getElementById('formError');
@@ -21,13 +20,6 @@
   });
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function updateCaptchaTheme() {
-    const widget = document.querySelector('.h-captcha');
-    if (!widget || !window.SolidSpawTheme) return;
-    const theme = window.SolidSpawTheme.getTheme();
-    widget.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
-  }
-
   if (location.protocol === 'file:') {
     console.warn(
       'hCaptcha nie działa przy otwarciu pliku (file://). ' +
@@ -35,9 +27,6 @@
       'a następnie otwórz http://localhost:8080'
     );
   }
-
-  updateCaptchaTheme();
-  document.addEventListener('solidspaw-themechange', updateCaptchaTheme);
 
   /* Header scroll */
   function onScroll() {
@@ -55,24 +44,21 @@
     navToggle.setAttribute('aria-expanded', String(open));
   });
 
+  function closeMobileNav() {
+    navToggle.classList.remove('open');
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
   navLinks.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
-      navToggle.classList.remove('open');
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      const id = link.getAttribute('href').slice(1);
-      if (id) setActiveNav(id);
+      closeMobileNav();
+      const href = link.getAttribute('href');
+      if (href && href.charAt(0) === '#') {
+        setActiveNav(href.slice(1));
+      }
     });
   });
-
-  /* Close mobile nav on theme toggle */
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      navToggle.classList.remove('open');
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  }
 
   /* Active nav */
   function setActiveNav(id) {

@@ -1,11 +1,11 @@
 {
-  "name": "SolidSpaw — Spawanie i Konstrukcje Stalowe",
-  "short_name": "SolidSpaw",
-  "description": "Precyzyjne spawanie TIG, MIG/MAG i konstrukcje stalowe w Wrześni i Wielkopolsce.",
+  "name": "Powala — Usługi Ślusarsko-Spawalnicze",
+  "short_name": "Powala",
+  "description": "Usługi ślusarsko-spawalnicze, konstrukcje stalowe, bramy i ogrodzenia w Wrześni i Wielkopolsce.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#09090b",
-  "theme_color": "#fafafa",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
   "lang": "pl",
   "icons": [
     {
