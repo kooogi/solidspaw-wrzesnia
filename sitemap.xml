@@ -2,26 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://kooogi.github.io/solidspaw-wrzesnia/</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://powala-wrzesnia.pl/</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/taras-stalowy-zadaszenie-balustrada.jpg</image:loc><image:title>Taras stalowy z zadaszeniem — SolidSpaw Września</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-metalowe-taras.jpg</image:loc><image:title>Schody metalowe na taras — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-stalowo-drewniane.jpg</image:loc><image:title>Schody stalowo-drewniane — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/konstrukcja-tarasu-balkonu-stalowego.jpg</image:loc><image:title>Konstrukcja tarasu i balkonu stalowego — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-grafitowa-schody.jpg</image:loc><image:title>Balustrada grafitowa przy schodach — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-stalowa-wrzesnia.jpg</image:loc><image:title>Balustrada stalowa Września — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-spiralne-balustrada.jpg</image:loc><image:title>Schody spiralne z balustradą — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-balkonowa-lamele.jpg</image:loc><image:title>Balustrada balkonowa z lamelami — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-balkonowa-sciana.jpg</image:loc><image:title>Balustrada balkonowa montowana do ściany — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-loftowa-schody.jpg</image:loc><image:title>Balustrada loftowa — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-schodowa-led.jpg</image:loc><image:title>Balustrada schodowa z LED — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/balustrada-schody-kamienne.jpg</image:loc><image:title>Balustrada przy schodach kamiennych — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-drewniane-biala-balustrada.jpg</image:loc><image:title>Schody drewniane z białą balustradą — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-oswietlenie-design.jpg</image:loc><image:title>Schody z designerskim oświetleniem — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/schody-luk-biala-balustrada.jpg</image:loc><image:title>Schody z łukiem i balustradą — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/zabudowa-przyczep-rolniczych.jpg</image:loc><image:title>Zabudowa przyczep rolniczych — SolidSpaw</image:title></image:image>
-    <image:image><image:loc>https://kooogi.github.io/solidspaw-wrzesnia/portfolio/przyczepy-konstrukcja-stalowa.jpg</image:loc><image:title>Przyczepy — konstrukcja stalowa — SolidSpaw</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/brama-przesuwna-antracyt-lamele.jpg</image:loc><image:title>Brama przesuwna antracytowa — Powała Września</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/brama-przesuwna-ogrodzenie-antracyt.jpg</image:loc><image:title>Brama z ogrodzeniem antracyt — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/brama-poziome-lamele-antracyt.jpg</image:loc><image:title>Brama z poziomymi lamelami — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/brama-przesuwna-nowoczesna-antracyt.jpg</image:loc><image:title>Brama przesuwna nowoczesna — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/brama-przesuwna-ozdobna.jpg</image:loc><image:title>Brama przesuwna ozdobna — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/brama-i-furtka-poziome-lamele.jpg</image:loc><image:title>Brama i furtka — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/furtka-metalowa-antracyt.jpg</image:loc><image:title>Furtka metalowa antracyt — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/ogrodzenie-palisadowe-antracyt.jpg</image:loc><image:title>Ogrodzenie palisadowe antracyt — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/ogrodzenie-frontowe-antracyt.jpg</image:loc><image:title>Ogrodzenie frontowe — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/ogrodzenie-poziome-slupki-betonowe.jpg</image:loc><image:title>Ogrodzenie ze słupkami betonowymi — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/ogrodzenie-metalowe-przeslo-poziome.jpg</image:loc><image:title>Przęsło ogrodzeniowe poziome — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/ogrodzenie-antracyt-slupki-bloczki.jpg</image:loc><image:title>Ogrodzenie ze słupkami z bloczków — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/ogrodzenie-poziome-antracyt-naroznik.jpg</image:loc><image:title>Ogrodzenie narożnikowe antracyt — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/glebosz-rolniczy-zolty.jpg</image:loc><image:title>Głębosz rolniczy — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/taras-stalowy-zadaszenie-balustrada.jpg</image:loc><image:title>Taras stalowy z zadaszeniem — Powała Września</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/schody-metalowe-taras.jpg</image:loc><image:title>Schody metalowe na taras — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/schody-stalowo-drewniane.jpg</image:loc><image:title>Schody stalowo-drewniane — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/konstrukcja-tarasu-balkonu-stalowego.jpg</image:loc><image:title>Konstrukcja tarasu i balkonu stalowego — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/balustrada-grafitowa-schody.jpg</image:loc><image:title>Balustrada grafitowa przy schodach — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/balustrada-stalowa-wrzesnia.jpg</image:loc><image:title>Balustrada stalowa Września — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/schody-spiralne-balustrada.jpg</image:loc><image:title>Schody spiralne z balustradą — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/balustrada-balkonowa-lamele.jpg</image:loc><image:title>Balustrada balkonowa z lamelami — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/balustrada-balkonowa-sciana.jpg</image:loc><image:title>Balustrada balkonowa montowana do ściany — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/balustrada-loftowa-schody.jpg</image:loc><image:title>Balustrada loftowa — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/balustrada-schodowa-led.jpg</image:loc><image:title>Balustrada schodowa z LED — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/balustrada-schody-kamienne.jpg</image:loc><image:title>Balustrada przy schodach kamiennych — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/schody-drewniane-biala-balustrada.jpg</image:loc><image:title>Balustrada przy schodach drewnianych — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/schody-oswietlenie-design.jpg</image:loc><image:title>Balustrada z oświetleniem — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/schody-luk-biala-balustrada.jpg</image:loc><image:title>Balustrada przy schodach z łukiem — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/zabudowa-przyczep-rolniczych.jpg</image:loc><image:title>Zabudowa przyczep rolniczych — Powała</image:title></image:image>
+    <image:image><image:loc>https://powala-wrzesnia.pl/portfolio/przyczepy-konstrukcja-stalowa.jpg</image:loc><image:title>Przyczepy — konstrukcja stalowa — Powała</image:title></image:image>
   </url>
 </urlset>

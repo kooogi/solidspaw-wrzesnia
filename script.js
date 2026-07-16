@@ -4,7 +4,6 @@
   const header = document.getElementById('header');
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
-  const themeToggle = document.getElementById('themeToggle');
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
   const formError = document.getElementById('formError');
@@ -21,13 +20,6 @@
   });
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function updateCaptchaTheme() {
-    const widget = document.querySelector('.h-captcha');
-    if (!widget || !window.SolidSpawTheme) return;
-    const theme = window.SolidSpawTheme.getTheme();
-    widget.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
-  }
-
   if (location.protocol === 'file:') {
     console.warn(
       'hCaptcha nie działa przy otwarciu pliku (file://). ' +
@@ -35,9 +27,6 @@
       'a następnie otwórz http://localhost:8080'
     );
   }
-
-  updateCaptchaTheme();
-  document.addEventListener('solidspaw-themechange', updateCaptchaTheme);
 
   /* Header scroll */
   function onScroll() {
@@ -55,29 +44,32 @@
     navToggle.setAttribute('aria-expanded', String(open));
   });
 
+  function closeMobileNav() {
+    navToggle.classList.remove('open');
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
   navLinks.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
-      navToggle.classList.remove('open');
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      const id = link.getAttribute('href').slice(1);
-      if (id) setActiveNav(id);
+      closeMobileNav();
+      const href = link.getAttribute('href');
+      if (href && href.charAt(0) === '#') {
+        setActiveNav(href.slice(1));
+      }
     });
   });
-
-  /* Close mobile nav on theme toggle */
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      navToggle.classList.remove('open');
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  }
 
   /* Active nav */
   function setActiveNav(id) {
     navAnchors.forEach(function (anchor) {
-      anchor.classList.toggle('active', anchor.getAttribute('href') === '#' + id);
+      const isActive = anchor.getAttribute('href') === '#' + id;
+      anchor.classList.toggle('active', isActive);
+      if (isActive) {
+        anchor.setAttribute('aria-current', 'true');
+      } else {
+        anchor.removeAttribute('aria-current');
+      }
     });
   }
 
@@ -216,50 +208,57 @@
   /* Gallery lightbox */
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
   const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrevBtn = document.getElementById('lightboxPrev');
+  const lightboxNextBtn = document.getElementById('lightboxNext');
   let lightboxTrigger = null;
+  let lightboxIndex = -1;
 
   function safeApiMessage(msg) {
     if (typeof msg !== 'string') return 'Nie udało się wysłać wiadomości. Spróbuj ponownie.';
     return msg.trim().slice(0, 500);
   }
 
-  function setLightboxCaption(tagText, nameText) {
-    if (!lightboxCaption) return;
-    lightboxCaption.replaceChildren();
-    if (!tagText && !nameText) {
-      lightboxCaption.hidden = true;
-      return;
-    }
-    if (tagText) {
-      const tagEl = document.createElement('span');
-      tagEl.className = 'lightbox__caption-tag';
-      tagEl.textContent = tagText;
-      lightboxCaption.appendChild(tagEl);
-    }
-    if (nameText) {
-      lightboxCaption.appendChild(document.createTextNode(nameText));
-    }
-    lightboxCaption.hidden = false;
+  function getLightboxItems() {
+    return Array.from(galleryItems).filter(function (item) {
+      return !item.classList.contains('hidden');
+    });
   }
 
-  function openLightbox(item) {
-    if (!lightbox || !lightboxImg) return;
+  function updateLightboxNav() {
+    const items = getLightboxItems();
+    const hasPrev = lightboxIndex > 0;
+    const hasNext = lightboxIndex >= 0 && lightboxIndex < items.length - 1;
+
+    if (lightboxPrevBtn) {
+      lightboxPrevBtn.disabled = !hasPrev;
+      lightboxPrevBtn.hidden = !hasPrev;
+    }
+    if (lightboxNextBtn) {
+      lightboxNextBtn.disabled = !hasNext;
+      lightboxNextBtn.hidden = !hasNext;
+    }
+  }
+
+  function showLightboxItem(item) {
+    if (!lightbox || !lightboxImg || !item) return;
     const img = item.querySelector('.bento__img');
-    const tag = item.querySelector('.bento__tag');
-    const name = item.querySelector('.bento__name');
     if (!img) return;
 
     lightboxTrigger = item;
     lightboxImg.src = img.currentSrc || img.src;
     lightboxImg.alt = img.alt || '';
 
-    if (lightboxCaption) {
-      const tagText = tag ? tag.textContent.trim() : '';
-      const nameText = name ? name.textContent.trim() : '';
-      setLightboxCaption(tagText, nameText);
-    }
+    updateLightboxNav();
+  }
+
+  function openLightbox(item) {
+    if (!lightbox || !lightboxImg) return;
+    const items = getLightboxItems();
+    lightboxIndex = items.indexOf(item);
+    if (lightboxIndex < 0) return;
+
+    showLightboxItem(item);
 
     lightbox.removeAttribute('hidden');
     requestAnimationFrame(function () {
@@ -269,10 +268,20 @@
     if (lightboxClose) lightboxClose.focus();
   }
 
+  function navigateLightbox(direction) {
+    const items = getLightboxItems();
+    if (!items.length || lightboxIndex < 0) return;
+    const nextIndex = lightboxIndex + direction;
+    if (nextIndex < 0 || nextIndex >= items.length) return;
+    lightboxIndex = nextIndex;
+    showLightboxItem(items[lightboxIndex]);
+  }
+
   function closeLightbox() {
     if (!lightbox) return;
     lightbox.classList.remove('is-open');
     document.body.style.overflow = '';
+    lightboxIndex = -1;
     if (lightboxTrigger) {
       lightboxTrigger.focus();
       lightboxTrigger = null;
@@ -284,10 +293,9 @@
   }
 
   galleryItems.forEach(function (item) {
-    const nameEl = item.querySelector('.bento__name');
-    if (nameEl) {
-      item.setAttribute('aria-label', 'Powiększ: ' + nameEl.textContent.trim());
-    }
+    const img = item.querySelector('.bento__img');
+    const label = img && img.alt ? img.alt.trim() : 'Powiększ zdjęcie';
+    item.setAttribute('aria-label', 'Powiększ: ' + label);
     item.setAttribute('tabindex', '0');
     item.setAttribute('role', 'button');
 
@@ -307,6 +315,20 @@
     lightboxClose.addEventListener('click', closeLightbox);
   }
 
+  if (lightboxPrevBtn) {
+    lightboxPrevBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      navigateLightbox(-1);
+    });
+  }
+
+  if (lightboxNextBtn) {
+    lightboxNextBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      navigateLightbox(1);
+    });
+  }
+
   if (lightbox) {
     lightbox.addEventListener('click', function (e) {
       if (e.target === lightbox) closeLightbox();
@@ -314,8 +336,15 @@
   }
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('is-open')) {
+    if (!lightbox || !lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') {
       closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      navigateLightbox(-1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      navigateLightbox(1);
     }
   });
 
@@ -411,7 +440,7 @@
       }
 
       const btn = contactForm.querySelector('[type="submit"]');
-      const originalText = btn.textContent;
+      const originalHtml = btn.innerHTML;
       btn.disabled = true;
       btn.textContent = 'Wysyłanie…';
 
@@ -454,7 +483,7 @@
         })
         .finally(function () {
           btn.disabled = false;
-          btn.textContent = originalText;
+          btn.innerHTML = originalHtml;
         });
     });
 

@@ -1,11 +1,13 @@
 {
-  "name": "SolidSpaw — Spawanie i Konstrukcje Stalowe",
-  "short_name": "SolidSpaw",
-  "description": "Precyzyjne spawanie TIG, MIG/MAG i konstrukcje stalowe w Wrześni i Wielkopolsce.",
+  "name": "Powała — Usługi Ślusarsko-Spawalnicze",
+  "short_name": "Powała",
+  "description": "Usługi ślusarskie i spawalnicze Września. Konstrukcje stalowe, bramy i ogrodzenia — Gutowo Małe, powiat wrzesiński.",
+  "id": "/",
+  "scope": "./",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#09090b",
-  "theme_color": "#fafafa",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
   "lang": "pl",
   "icons": [
     {
