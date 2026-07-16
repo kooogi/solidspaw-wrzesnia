@@ -173,6 +173,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
   border-bottom: 1px solid var(--border);
 }
 
+.section--offer {
+  background: var(--section-band);
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: var(--header-h);
+}
+
 .about__intro {
   margin-bottom: clamp(var(--space-12), 5vw, var(--space-20));
   max-width: 28rem;
@@ -265,10 +271,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(var(--space-10), 5vw, var(--space-16));
   align-items: start;
-  margin-top: clamp(var(--space-16), 7vw, var(--space-24));
-  padding-top: clamp(var(--space-12), 5vw, var(--space-20));
-  border-top: 1px solid var(--border);
-  scroll-margin-top: var(--header-h);
 }
 
 .about__scope-head {
@@ -303,10 +305,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
   display: grid;
   grid-template-columns: 3.5rem 1fr;
   gap: var(--space-4);
-  align-items: baseline;
+  align-items: start;
   padding: var(--space-5) 0;
   border-bottom: 1px solid var(--border);
-  transition: color 0.25s, border-color 0.25s;
+  transition: border-color 0.25s;
 }
 
 .about__scope-item:hover {
@@ -323,6 +325,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--text-muted);
+  padding-top: 0.2em;
+}
+
+.about__scope-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
 }
 
 .about__scope-name {
@@ -332,6 +342,26 @@ button, input, select, textarea { font: inherit; color: inherit; }
   letter-spacing: 0.01em;
   color: var(--text);
   transition: color 0.25s;
+}
+
+.about__scope-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 36rem;
+}
+
+.gallery__lead {
+  margin-top: var(--space-4);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 28rem;
+}
+
+.contact__value {
+  display: block;
+  color: var(--text);
+  font-style: normal;
 }
 
 /* ================================================================
@@ -697,7 +727,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
    Gallery — bento grid
    ================================================================ */
 .section--gallery {
-  background: var(--section-band);
+  background: var(--section-band-alt);
+  border-bottom: 1px solid var(--border);
 }
 
 .gallery__header {
@@ -824,15 +855,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
   background: var(--surface-2);
 }
 
-.bento__visual::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(9, 9, 11, 0.9) 0%, rgba(9, 9, 11, 0.15) 45%, transparent 70%);
-  pointer-events: none;
-  z-index: 1;
-}
-
 .bento__img {
   width: 100%;
   height: 100%;
@@ -844,40 +866,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .bento__item:hover .bento__img {
   transform: scale(1.04);
-}
-
-.bento__meta {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: var(--space-5) var(--space-6);
-  z-index: 2;
-}
-
-.bento__tag {
-  display: block;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent-hover);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.bento__name {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: #f4f4f5;
-  margin-top: var(--space-1);
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
 }
 
 /* ================================================================
@@ -983,30 +971,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .lightbox__img {
   max-width: 100%;
-  max-height: calc(90vh - 4rem);
+  max-height: 90vh;
   width: auto;
   height: auto;
   object-fit: contain;
   border-radius: var(--radius-lg);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
-}
-
-.lightbox__caption {
-  text-align: center;
-  color: #e4e4e7;
-  font-size: var(--text-sm);
-  max-width: 36rem;
-  line-height: 1.5;
-}
-
-.lightbox__caption-tag {
-  display: block;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent-hover);
-  margin-bottom: var(--space-1);
 }
 
 @media (max-width: 768px) {
@@ -1543,25 +1513,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
   .bento__item {
     aspect-ratio: 4 / 5;
-  }
-
-  .bento__visual::after {
-    background: linear-gradient(
-      to top,
-      rgba(9, 9, 11, 0.97) 0%,
-      rgba(9, 9, 11, 0.9) 38%,
-      rgba(9, 9, 11, 0.35) 68%,
-      transparent 100%
-    );
-  }
-
-  .bento__meta {
-    padding: var(--space-3) var(--space-4);
-  }
-
-  .bento__name {
-    font-size: var(--text-sm);
-    -webkit-line-clamp: 3;
   }
 
   .bento__item:hover {

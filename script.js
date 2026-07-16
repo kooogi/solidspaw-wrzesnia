@@ -202,7 +202,6 @@
   /* Gallery lightbox */
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
   const lightboxClose = document.getElementById('lightboxClose');
   const lightboxPrevBtn = document.getElementById('lightboxPrev');
   const lightboxNextBtn = document.getElementById('lightboxNext');
@@ -218,25 +217,6 @@
     return Array.from(galleryItems).filter(function (item) {
       return !item.classList.contains('hidden');
     });
-  }
-
-  function setLightboxCaption(tagText, nameText) {
-    if (!lightboxCaption) return;
-    lightboxCaption.replaceChildren();
-    if (!tagText && !nameText) {
-      lightboxCaption.hidden = true;
-      return;
-    }
-    if (tagText) {
-      const tagEl = document.createElement('span');
-      tagEl.className = 'lightbox__caption-tag';
-      tagEl.textContent = tagText;
-      lightboxCaption.appendChild(tagEl);
-    }
-    if (nameText) {
-      lightboxCaption.appendChild(document.createTextNode(nameText));
-    }
-    lightboxCaption.hidden = false;
   }
 
   function updateLightboxNav() {
@@ -257,19 +237,11 @@
   function showLightboxItem(item) {
     if (!lightbox || !lightboxImg || !item) return;
     const img = item.querySelector('.bento__img');
-    const tag = item.querySelector('.bento__tag');
-    const name = item.querySelector('.bento__name');
     if (!img) return;
 
     lightboxTrigger = item;
     lightboxImg.src = img.currentSrc || img.src;
     lightboxImg.alt = img.alt || '';
-
-    if (lightboxCaption) {
-      const tagText = tag ? tag.textContent.trim() : '';
-      const nameText = name ? name.textContent.trim() : '';
-      setLightboxCaption(tagText, nameText);
-    }
 
     updateLightboxNav();
   }
@@ -315,10 +287,9 @@
   }
 
   galleryItems.forEach(function (item) {
-    const nameEl = item.querySelector('.bento__name');
-    if (nameEl) {
-      item.setAttribute('aria-label', 'Powiększ: ' + nameEl.textContent.trim());
-    }
+    const img = item.querySelector('.bento__img');
+    const label = img && img.alt ? img.alt.trim() : 'Powiększ zdjęcie';
+    item.setAttribute('aria-label', 'Powiększ: ' + label);
     item.setAttribute('tabindex', '0');
     item.setAttribute('role', 'button');
 
