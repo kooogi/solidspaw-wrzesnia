@@ -1,3 +1,4 @@
 .env
 .env.*
 config.local.js
+/assets/old
