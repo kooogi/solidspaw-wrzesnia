@@ -12,7 +12,7 @@
   --border-hover: rgba(255, 255, 255, 0.16);
   --text:         #fafafa;
   --text-secondary: #a0a0a0;
-  --text-muted:   #6b6b6b;
+  --text-muted:   #8a8a8a;
   --accent:       #fd7014;
   --accent-hover: #ff8533;
   --accent-muted: rgba(253, 112, 20, 0.18);
@@ -1000,25 +1000,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
   overflow: hidden;
 }
 
-.section--contact::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 6rem;
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 4px,
-      rgba(255,255,255,0.03) 4px,
-      rgba(255,255,255,0.03) 8px
-    );
-  pointer-events: none;
-  opacity: 0.5;
-}
-
 .contact__title-split .text-accent {
   display: block;
   margin-top: var(--space-2);
@@ -1233,11 +1214,17 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 
 .site-footer__inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-6);
-  flex-wrap: wrap;
+  gap: var(--space-6) var(--space-8);
+}
+
+.site-footer__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
 }
 
 .site-footer__copy {
@@ -1245,9 +1232,24 @@ button, input, select, textarea { font: inherit; color: inherit; }
   color: var(--text-muted);
 }
 
+.site-footer__credit {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.site-footer__credit a {
+  color: var(--text-secondary);
+  transition: color 0.25s;
+}
+
+.site-footer__credit a:hover {
+  color: var(--accent-hover);
+}
+
 .site-footer__nav {
   display: flex;
   gap: var(--space-6);
+  flex-shrink: 0;
 }
 
 .site-footer__nav a {
@@ -1343,11 +1345,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
   }
 
   .about__visual {
-    max-width: 32rem;
+    max-width: none;
+    width: 100%;
   }
 
   .about__img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
   }
 
   .contact__layout {
@@ -1403,6 +1406,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
   .hero__actions .btn {
     width: 100%;
+  }
+
+  .about__img {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: cover;
   }
 
   .section__title { font-size: var(--text-3xl); }
@@ -1524,8 +1535,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .glass { padding: var(--space-6); }
 
   .site-footer__inner {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    justify-items: center;
     text-align: center;
+  }
+
+  .site-footer__nav {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 

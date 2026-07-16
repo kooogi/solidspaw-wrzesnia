@@ -2,6 +2,8 @@
   "name": "Powała — Usługi Ślusarsko-Spawalnicze",
   "short_name": "Powała",
   "description": "Usługi ślusarskie i spawalnicze Września. Konstrukcje stalowe, bramy i ogrodzenia — Gutowo Małe, powiat wrzesiński.",
+  "id": "/",
+  "scope": "./",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0a0a0a",

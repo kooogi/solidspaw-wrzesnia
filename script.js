@@ -63,7 +63,13 @@
   /* Active nav */
   function setActiveNav(id) {
     navAnchors.forEach(function (anchor) {
-      anchor.classList.toggle('active', anchor.getAttribute('href') === '#' + id);
+      const isActive = anchor.getAttribute('href') === '#' + id;
+      anchor.classList.toggle('active', isActive);
+      if (isActive) {
+        anchor.setAttribute('aria-current', 'true');
+      } else {
+        anchor.removeAttribute('aria-current');
+      }
     });
   }
 
@@ -434,7 +440,7 @@
       }
 
       const btn = contactForm.querySelector('[type="submit"]');
-      const originalText = btn.textContent;
+      const originalHtml = btn.innerHTML;
       btn.disabled = true;
       btn.textContent = 'Wysyłanie…';
 
@@ -477,7 +483,7 @@
         })
         .finally(function () {
           btn.disabled = false;
-          btn.textContent = originalText;
+          btn.innerHTML = originalHtml;
         });
     });
 
